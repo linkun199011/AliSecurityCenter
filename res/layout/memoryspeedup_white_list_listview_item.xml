@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants" >
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/iv_white_list_appIcon"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/Static_iv_appIcon"
+            android:src="@drawable/default_app_icon" />
+
+        <TextView
+            android:id="@+id/tv_white_list_app_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:layout_gravity="center"
+            android:text="@string/tv_white_list_app_name"
+        	android:textColor="@color/black"
+            android:textSize="23sp" />
+
+        <CheckBox
+            android:id="@+id/cb_white_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:focusable="false" />
+    </TableRow>
+
+</TableLayout>

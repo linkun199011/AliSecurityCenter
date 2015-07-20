@@ -1,0 +1,84 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/StaticTotalMemory" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_totalMemory"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/tv_totalMemory" >
+        </TextView>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/StaticRestMemory" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_availMemory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/tv_availMemory" >
+        </TextView>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/bt_oneKeyAccelerate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_security_boost"
+            android:onClick="oneKeyAccelerate"
+            android:text="@string/StaticOneKeyAccelerate" />
+    </TableRow>
+	<ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#cacaca" 
+            android:contentDescription="@string/Static_iv_main_single_line"/>
+    <TableRow
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2" >
+        <ListView
+            android:id="@+id/lv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp" >
+        </ListView>
+    </TableRow>
+
+</TableLayout>

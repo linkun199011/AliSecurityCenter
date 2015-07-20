@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="privacyspace_items_title">
+        <item>私密通讯</item>
+        <item>私密图片</item>
+        <item>私密文件</item>
+        <item>应用密码锁</item>
+    </string-array>
+    
+    <string-array name="privacyspace_items_subtitle">
+        <item>加密隐私通讯</item>
+        <item>加密隐私图片</item>
+        <item>加密隐私文件</item>
+        <item>对私密应用加锁</item>
+    </string-array>
+    
+</resources>

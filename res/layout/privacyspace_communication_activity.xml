@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/empty_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:visibility="gone" 
+        >
+
+        <Button 
+            android:id="@+id/btn_add_private_contact"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Add Private Contact"
+            android:layout_alignParentBottom="true"
+            />
+        <ImageView
+            android:id="@+id/iv_private_contact_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/private_contact_empty" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/iv_private_contact_empty"
+            android:layout_above="@id/btn_add_private_contact"
+            android:paddingLeft="42dp"
+            android:paddingRight="42dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/static_private_contact_empty_wording" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/list_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" 
+        >
+        <Button 
+            android:id="@+id/btn_add_private_contact_more"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Add Private Contact More"
+            android:layout_alignParentBottom="true"
+            />
+
+        <ListView
+            android:id="@+id/contact_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_add_private_contact_more"
+            android:cacheColorHint="#000000" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/royalblue" >
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent" >
+
+            <Button
+                android:id="@+id/tv_memoryspeedup"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/lawngreen"
+                android:gravity="center"
+                android:text="@string/Static_MobileAcceleration_tv"
+                android:textAppearance="@style/AppTheme"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:contentDescription="@string/Static_Separators_iv" />
+
+            <Button
+                android:id="@+id/tv_privacyspace"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/lawngreen"
+                android:gravity="center"
+                android:text="@string/Static_PrivacySpace_tv"
+                android:textAppearance="@style/AppTheme"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </TableRow>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_horizontal_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/relativelayout_bottom"
+        android:background="@color/white"
+        android:contentDescription="@string/Static_Separators_iv" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/iv_horizontal_separator" >
+
+        <TextView
+            android:id="@+id/tv_security_center"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/Static_SecurityCenter_tv"
+            android:textColor="@color/whitesmoke"
+            android:textSize="50sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

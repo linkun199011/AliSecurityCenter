@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <ImageView
+        android:id="@+id/iv_privacyspace_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/privacyspace_item_icon_margin"
+        android:layout_marginLeft="@dimen/privacyspace_item_icon_margin"
+        android:layout_marginTop="@dimen/privacyspace_item_icon_margin"
+        android:contentDescription="@string/iv_privacyspace_item_icon"
+        android:src="@drawable/ic_security_pricacy_contact_normal" />
+
+    <TextView
+        android:id="@+id/tv_privacyspace_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/privacyspace_item_icon_margin"
+        android:layout_marginTop="@dimen/privacyspace_item_title_margin"
+        android:layout_toRightOf="@id/iv_privacyspace_item"
+        android:text="@string/static_privacyspace_tv_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/privacyspace_item_title_text_size" />
+
+    <TextView
+        android:id="@+id/tv_privacyspace_item_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_privacyspace_item_title"
+        android:layout_marginLeft="@dimen/privacyspace_item_icon_margin"
+        android:layout_marginTop="@dimen/privacyspace_item_subtitle_margin"
+        android:layout_toRightOf="@id/iv_privacyspace_item"
+        android:text="@string/static_privacyspace_tv_subtitle"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/privacyspace_item_subtitle_text_size" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/imageview_seperator"
+        android:layout_below="@id/iv_privacyspace_item"
+        android:background="@color/gray"
+        android:contentDescription="@string/Static_Separators_iv" />
+
+</RelativeLayout>
