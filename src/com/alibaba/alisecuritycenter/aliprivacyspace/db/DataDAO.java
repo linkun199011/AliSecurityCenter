@@ -9,10 +9,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.ContactsContract.RawContacts.Data;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 
 public class DataDAO {
     private static final String TAG = "DataDAO";
@@ -419,5 +421,44 @@ public class DataDAO {
             }
             insertData(dt);
         }
+    }
+
+
+    /**
+     * get phone list under the same psRawContactId.
+     * @param psRawContactId
+     * @return
+     */
+    public List<DataTable> getPhoneList(int psRawContactId) throws SQLiteException{
+        // TODO Auto-generated method stub
+        List<DataTable> list = new ArrayList<>();
+        synchronized (dbHelper) {
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            String[] columns = new String[]{"mimetype","data1"};
+            String selection = "raw_contact_id = ?";
+            String[] selectionArgs = new String[] {psRawContactId+""};
+            Cursor cursor = null;
+            DataTable dt = null;
+            try{
+                cursor = db.query(DataTable.TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+                while(cursor.moveToNext()){
+                    dt = new DataTable();
+                    dt.setMimetype(cursor.getString(cursor.getColumnIndex(DataTable.MIMETYPE)));
+                    dt.setData1(cursor.getString(cursor.getColumnIndex(DataTable.DATA1)));
+                    if(null == dt.getMimetype()){
+                        continue;
+                    }
+                    if(dt.getMimetype().equals("vnd.android.cursor.item/phone_v2")){
+                        list.add(dt);
+                    }
+                }
+            } catch(Exception e){
+                Log.i(TAG, "getPhoneList :" + e.toString());
+            } finally{
+                db.close();
+                
+            }
+        }
+        return list;
     }
 }

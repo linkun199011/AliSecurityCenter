@@ -9,6 +9,9 @@ public class ContactItem {
 	private int contactId;
 	private int rawContactId;
 	
+	public ContactItem(){
+	    
+	}
 	public ContactItem(String name, String number, Bitmap head, int contactId, int rawContactId) {
 		super();
 		this.name = name;

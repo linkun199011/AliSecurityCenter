@@ -1,10 +1,14 @@
 package com.alibaba.alisecuritycenter.aliprivacyspace.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.net.Uri;
 import android.provider.ContactsContract.RawContacts;
 import android.util.Log;
@@ -42,7 +46,6 @@ public class RawContactsDAO {
                     //rct.setIs_restricted(c.getInt(c.getColumnIndex(RawContactsTable.IS_RESTRICTED)));
                     rct.setSourceid(c.getString(c
                             .getColumnIndex(RawContactsTable.SOURCEID)));
-                    
                     rct.setVersion(c.getInt(c
                             .getColumnIndex(RawContactsTable.VERSION)));
                     rct.setDirty(c.getInt(c
@@ -51,7 +54,6 @@ public class RawContactsDAO {
                             .getColumnIndex(RawContactsTable.DELETED)));
                     rct.setAggregation_mode(c.getInt(c
                             .getColumnIndex(RawContactsTable.AGGREGATION_MODE)));
-                    
                     rct.setCumstom_ringtone(c.getString(c
                             .getColumnIndex(RawContactsTable.CUSTOM_RINGTONE)));
                     rct.setSend_to_voicemail(c.getInt(c
@@ -76,7 +78,6 @@ public class RawContactsDAO {
                             .getColumnIndex(RawContactsTable.SORT_KEY)));
                     rct.setSort_key_alt(c.getString(c
                             .getColumnIndex(RawContactsTable.SORT_KEY_ALT)));
-                    
                     rct.setName_verified(c.getInt(c
                             .getColumnIndex(RawContactsTable.NAME_VERIFIED)));
                     rct.setSync1(c.getString(c
@@ -184,7 +185,6 @@ public class RawContactsDAO {
                                 rct.getPhonetic_name_style(),
                                 rct.getSort_key(), 
                                 rct.getSort_key_alt(),
-                                
                                 rct.getName_verified(), 
                                 rct.getSync1(),
                                 rct.getSync2(), 
@@ -232,7 +232,7 @@ public class RawContactsDAO {
     }
 
     /**
-     * delete specific contact's all information.
+     * delete specific contact's all information.(System's contact info)
      * because of the Trigger, once delete contact's rawContacts table, 
      * all it's related raws in which --data table and contacts table -- will be deleted.
      * @param rawContactId
@@ -248,4 +248,64 @@ public class RawContactsDAO {
             Log.i(TAG, "deleteAllInfo :"+e.toString());
         }
     }
+    
+    /**
+     * get total number of raw_contacts table.
+     * @return
+     * @throws SQLiteException
+     */
+    public int getAllContactsCount() throws SQLiteException{
+        int total = 0;
+        synchronized (dbHelper) {
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            String sql = "select count(*) from " + RawContactsTable.TABLE_NAME;
+            Cursor cursor = null;
+            try{
+                cursor = db.rawQuery(sql, null); 
+                if(cursor.moveToNext()){
+                    total = cursor.getInt(0);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally{
+                db.close();
+                cursor.close();
+            }
+        }
+        return total;
+    }
+    
+    /**
+     * get list of all contacts
+     * @return
+     * @throws SQLiteException
+     */
+    public List<RawContactsTable> getAllContacts() throws SQLiteException{
+        List<RawContactsTable> list = new ArrayList<>();
+        synchronized (dbHelper) {
+            SQLiteDatabase db = dbHelper.getReadableDatabase();
+            RawContactsTable rct = null;
+            Cursor cursor = null;
+            try{
+                cursor = db.query(RawContactsTable.TABLE_NAME, null, null, null, null, null, null);
+                while(cursor.moveToNext()){
+                    //can I new This object outside the while
+                    rct = new RawContactsTable();
+                    rct.set_id(cursor.getInt(cursor.getColumnIndex(RawContactsTable._ID)));
+                    rct.setDisplay_name(cursor.getString(cursor.getColumnIndex(RawContactsTable.DISPLAY_NAME)));
+                    rct.setContact_id(cursor.getInt(cursor.getColumnIndex(RawContactsTable.CONTACT_ID)));
+                    
+                    list.add(rct);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally{
+                db.close();
+                cursor.close();
+            }
+        }
+        return list;
+    }
+    
+    
 }
