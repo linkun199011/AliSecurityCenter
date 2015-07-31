@@ -2,24 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
     android:orientation="vertical" >
-    
+
     <RelativeLayout
         android:id="@+id/empty_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/white"
-        android:visibility="gone" 
+        android:orientation="vertical"
+        android:visibility="gone"
         >
 
-        <Button 
-            android:id="@+id/btn_add_private_contact"
+        <RelativeLayout
+            android:id="@+id/footer_empty"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Add Private Contact"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            />
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/btn_add_private_contact"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/btn_security_bg_normal"
+                android:textColor="@color/white"
+                android:text="Add Private Contact" />
+        </RelativeLayout>
+
         <ImageView
             android:id="@+id/iv_private_contact_empty"
             android:layout_width="wrap_content"
@@ -32,9 +43,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_above="@id/footer_empty"
             android:layout_below="@id/iv_private_contact_empty"
-            android:layout_above="@id/btn_add_private_contact"
+            android:orientation="vertical"
             android:paddingLeft="42dp"
             android:paddingRight="42dp" >
 
@@ -49,37 +60,81 @@
         android:id="@+id/list_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical" 
         >
-        <Button 
-            android:id="@+id/btn_add_private_contact_more"
+
+        <RelativeLayout
+            android:id="@+id/footer"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="Add Private Contact More"
-            android:layout_alignParentBottom="true"
-            />
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true" >
+
+            <Button
+                android:id="@+id/btn_add_private_contact_more"
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:text="Add Private Contact More"
+                android:background="@drawable/btn_security_bg_normal"
+                android:visibility="visible" 
+                android:textColor="@color/white"
+                />
+
+            <RelativeLayout
+                android:id="@+id/footer_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:visibility="gone" 
+                
+                >
+
+                <Button
+                    android:id="@+id/cancel_btn"
+                    android:layout_width="158dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/btn_security_gray_normal"
+                    android:text="取消"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="16dp" />
+
+                <Button
+                    android:id="@+id/delete_btn"
+                    android:layout_width="158dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/btn_install_red_normal"
+                    android:text="删除"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="16dp" />
+            </RelativeLayout>
+        </RelativeLayout>
 
         <ListView
             android:id="@+id/contact_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/btn_add_private_contact_more"
+            android:layout_above="@id/footer"
+            android:divider="@null"
             android:cacheColorHint="#000000" />
-
     </RelativeLayout>
-    <RelativeLayout 
+
+    <RelativeLayout
         android:id="@+id/rela_progress"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        >
-        <ProgressBar 
+        android:visibility="gone" >
+
+        <ProgressBar
             android:id="@+id/progress"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
             style="?android:attr/progressBarStyleHorizontal"
-            />
+            android:layout_width="240dp"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
 </RelativeLayout>
